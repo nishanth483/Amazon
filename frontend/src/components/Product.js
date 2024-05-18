@@ -7,7 +7,6 @@ import Rating from "./Rating";
 function Product(props)
 {
     const{product} = props;
-
     return (
         <Card>
         <Link to={`/product/${product.slug}`}>
