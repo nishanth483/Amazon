@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-// import data from '../data';
 import { Link } from 'react-router-dom';
 import  {useState} from "react";
 import axios from 'axios';
@@ -31,23 +30,28 @@ const HomeScreen = () => {
     loading:true,
     error:'',
   })
-  // const[products,setProducts]=useState([]);
+ 
 
   useEffect(()=>{
     const fetchData = async()=>{
       dispatch({type:'FETCH_REQUEST'});
       try{
-      const result = await axios.get('/api/products')
+      const result = await axios.get('http://localhost:5000/api/products', {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+      console.log(result.data)
       dispatch({type:'FETCH_SUCCESS',payload:result.data})
       }catch(err)
       {
      dispatch({type:'FETCH_FAIL',payload:err.message})
       }
-      // const result = await axios.get('/api/products');
-      // setProducts(result.data);
     };
   fetchData();
   },[]);
+
+ 
 
   return (
     <div>
