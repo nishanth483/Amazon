@@ -32,6 +32,8 @@ import seedRouter from './routes/seedRoutes.js';
 import productRouter from './routes/productRoutes.js';
 import http from 'http';
 import userRouter from './routes/userRoutes.js';
+import orderRouter from './routes/orderRoutes.js';
+import path from 'path';
 
 dotenv.config();
 
@@ -41,7 +43,11 @@ mongoose.connect(process.env.MONGODB_URL).then(() => {
   console.error('Error connecting to MongoDB:', err.message);
 });
 
+
+
+import cors from 'cors';
 const app = express();
+app.use(cors({ origin: 'http://localhost:3000' }));
 
 
 app.use((req, res, next) => {
@@ -57,7 +63,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/api/seed', seedRouter);
 app.use('/api/products', productRouter);
-app.use('/api/users',userRouter)
+app.use('/api/users',userRouter);
+app.use('/api/orders',orderRouter);
+
+
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname,'/frontend/build')));
+
+app.get('*',(req,res)=>{
+  res.sendFile(path.join(__dirname,'/frontend/build/index.html'))
+})
+
+
 app.use((err,req,res,next)=>{
   res.status(500).send({message:err.message});
 })

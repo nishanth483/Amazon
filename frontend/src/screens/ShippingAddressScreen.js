@@ -94,7 +94,7 @@ const[country,setCountry]=useState(shippingAddress.country || '');
 
   <Form.Group className="mb-3" controlId="city">
   <Form.Label>City</Form.Label>
-  <Form.Control value={address}
+  <Form.Control value={city}
   onChange={(e)=>setCity(e.target.value)}
   required
   />
