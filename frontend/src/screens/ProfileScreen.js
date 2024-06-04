@@ -15,11 +15,11 @@ const reducer = (state,action)=>{
 switch(action.type)
 {
     case 'UPDATE_REQUEST':
-        return {...state,loadingUpdate:true};
+        return {...state};
         case 'UPDATE_SUCCESS':
-            return  {...state,loadingUpdate:false};
+            return  {...state};
             case 'UPDATE_FAIL':
-                return {...state,loadingUpdate:false};
+                return {...state};
          default : 
          return state;
             }
@@ -34,7 +34,7 @@ const ProfileScreen = () => {
     const[password,setPassword]=useState('');
     const[confirmPassword,setConfirmPassword]=useState('');
     
-    const[{loadingUpdate},dispatch]=useReducer(reducer,{
+    const[dispatch]=useReducer(reducer,{
         loadingUpdate : false,
     });
 
