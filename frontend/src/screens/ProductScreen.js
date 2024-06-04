@@ -5,7 +5,7 @@ import {useEffect} from "react";
 import Row from 'react-bootstrap/Row';
 import  Col from 'react-bootstrap/Col';
 import Rating from "../components/Rating";
-import { Container, ListGroup ,Card} from 'react-bootstrap';
+import { ListGroup ,Card} from 'react-bootstrap';
 import Badge from "react-bootstrap/Badge";
 import Button from "react-bootstrap/Button";
 import {Helmet} from 'react-helmet-async';
@@ -13,7 +13,7 @@ import LoadingBox from "../components/LoadingBox";
 import MessageBox from "../components/MessageBox";
 import { getError } from "../util";
 import { useContext } from "react";
-import { Store, StoreProvider } from "../Store";
+import { Store } from "../Store";
 import { useNavigate } from "react-router-dom";
 
 const reducer = (state,action)=>{

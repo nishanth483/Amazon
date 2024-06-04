@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet-async';
 import CheckoutSteps from '../components/CheckoutSteps';
-import { Row, Col, Card, Button, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Row, Col, Card, Button, ListGroup, } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { Store } from '../Store';
 import { useEffect } from 'react';

@@ -51,7 +51,6 @@
 
 
 import './App.css';
-import data from './data';
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -65,7 +64,6 @@ import Badge from 'react-bootstrap/Badge';
 import {useContext} from 'react';
 import { Store } from './Store';
 import { Link } from 'react-router-dom';
-import CardText from 'react-bootstrap/CardText';
 import CartScreen from './screens/CartScreen';
 import SigninScreen from './screens/SigninScreen';
 import  NavDropdown  from 'react-bootstrap/NavDropdown';
