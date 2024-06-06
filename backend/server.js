@@ -47,7 +47,12 @@ mongoose.connect(process.env.MONGODB_URL).then(() => {
 
 import cors from 'cors';
 const app = express();
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({
+  origin: 'https://amazonfrontendfinal.vercel.app'
+}));
+
+
+app.use(cors())
 
 
 app.use((req, res, next) => {

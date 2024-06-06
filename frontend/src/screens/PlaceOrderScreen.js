@@ -53,7 +53,7 @@ const PlaceOrderScreen = () => {
     try {
       dispatch({ type: 'CREATE_REQUEST' });
       const { data } = await axios.post(
-        'http://localhost:5000/api/orders',
+        'https://amazonbackend-kappa.vercel.app/api/orders',
         {
           orderItems: cart.cartItems,
           shippingAddress: cart.shippingAddress,

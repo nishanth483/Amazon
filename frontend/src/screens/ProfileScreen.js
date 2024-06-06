@@ -43,7 +43,7 @@ const ProfileScreen = () => {
    e.preventDefault();
     try{
       const {data} = await axios.put(
-        `http://localhost:5000/api/users/profile`,
+        `https://amazonbackend-kappa.vercel.app/api/users/profile`,
         {
             name,
             email,

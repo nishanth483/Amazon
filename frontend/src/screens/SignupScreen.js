@@ -18,14 +18,10 @@ const SignupScreen = () => {
     const {search} = useLocation();
     const redirectInUrl = new URLSearchParams(search).get('redirect');
     const redirect = redirectInUrl ? redirectInUrl : '/';
-    
-
     const[name,setName]=useState('');
     const[email,setEmail]=useState('');
     const[password,setPassword]=useState('');
     const[confirmPassword,setConfirmPassword]=useState('');
-
-
    const {state, dispatch : ctxDispatch} = useContext(Store);
    const {userInfo}= state;
   
@@ -38,7 +34,7 @@ const SignupScreen = () => {
             return;
         }
       try{
-  const {data} = await axios.post('http://localhost:5000/api/users/signup',{
+  const {data} = await axios.post('https://amazonbackend-kappa.vercel.app/api/users/signup',{
   name,
   email,
   password,

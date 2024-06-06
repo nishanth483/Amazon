@@ -271,7 +271,7 @@ const OrderScreen = () => {
         const fetchOrder = async () => {
             try {
                 dispatch({ type: 'FETCH_REQUEST' });
-                const { data } = await axios.get(`http://localhost:5000/api/orders/${orderId}`, {
+                const { data } = await axios.get(`https://amazonbackend-kappa.vercel.app/api/orders/${orderId}`, {
                     headers: { Authorization: `Bearer ${userInfo.token}` },
                 });
                 dispatch({ type: 'FETCH_SUCCESS', payload: data });

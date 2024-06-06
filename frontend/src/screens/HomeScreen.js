@@ -34,7 +34,7 @@ const HomeScreen = () => {
     const fetchData = async()=>{
       dispatch({type:'FETCH_REQUEST'});
       try{
-      const result = await axios.get('http://localhost:5000/api/products', {
+      const result = await axios.get('https://amazonbackend-kappa.vercel.app/api/products', {
         headers: {
             'Content-Type': 'application/json',
         }
