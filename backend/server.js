@@ -51,10 +51,6 @@ app.use(cors({
   origin: 'https://amazonfrontendfinal.vercel.app'
 }));
 
-// app.use(cors({
-//   origin: ['https://amazonfrontendfinal.vercel.app', 'http://localhost:3000']
-// }));
-
 
 
 app.use(cors())
