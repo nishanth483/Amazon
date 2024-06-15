@@ -48,13 +48,11 @@ mongoose.connect(process.env.MONGODB_URL).then(() => {
 import cors from 'cors';
 const app = express();
 app.use(cors({
-  origin: 'https://amazonfrontendfinal.vercel.app'
+  origin: 'https://amazonfrontendfinal.vercel.app',
 }));
 
 
-
 app.use(cors())
-
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, If-None-Match');
@@ -65,13 +63,22 @@ app.use((req, res, next) => {
 
 
 
+// const allowedOrigins = ['http://localhost:3000', 'https://amazonfrontendfinal.vercel.app'];
+// app.use(cors({
+//   origin: allowedOrigins,
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   allowedHeaders: ['Content-Type', 'Authorization', 'If-None-Match'],
+//   optionsSuccessStatus: 204,
+// }));
+
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/api/seed', seedRouter);
 app.use('/api/products', productRouter);
 app.use('/api/users',userRouter);
 app.use('/api/orders',orderRouter);
-
 
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname,'/frontend/build')));

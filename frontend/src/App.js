@@ -80,6 +80,8 @@ import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { getError } from './util';
 import axios from 'axios';
+import SearchBox from './components/SearchBox';
+import SearchScreen from './screens/SearchScreen';
 
 function App() {
   const {state, dispatch:ctxDispatch} =  useContext(Store);
@@ -98,10 +100,9 @@ function App() {
   useEffect(()=>{
     const fetchCategories = async()=>{
       try{
- const {data} = await axios.get(`https://amazonbackend-kappa.vercel.app/api/products/category`,{   headers: {
+ const {data} = await axios.get(`https://amazonbackend-kappa.vercel.app/api/products/categories`,{   headers: {
   'Content-Type': 'application/json',
 }
-
  });
  setCategories(data);
       }catch(err)
@@ -120,7 +121,7 @@ function App() {
      : "d-flex flex-column site-container"}>
       <ToastContainer position="bottom-center" limit={1}/>
       <header>
-          <Navbar bg="dark" variant="dark">
+          <Navbar bg="dark" variant="dark" expand="lg">
             <Container>
             <Button
             variant="dark"
@@ -133,6 +134,7 @@ function App() {
               </LinkContainer>
               <Navbar.Toggle aria-controls="basic-navbar-nav"/>
              <Navbar.Collapse id="basic-navbar-nav">
+             <SearchBox/>
               <Nav className="me-auto w-100 justify-content-end">
               <Link to="/cart" className="nav-link">
               Cart
@@ -178,15 +180,22 @@ onClick={signoutHandler}
 <Nav.Item>
 <strong>Categories</strong>
 </Nav.Item>
-{categories.map((category)=>(
+
+
+{categories.map((category) => (
   <Nav.Item key={category}>
-  <LinkContainer
-  to={`/search?category=${category}`}
-  onClick={()=>setSidebarIsOpen(false)}>
-  <Nav.Link>{category}</Nav.Link>
-  </LinkContainer>
+    <LinkContainer
+      to={{
+        pathname: '/search',
+        search: `?category=${category}`
+      }}
+      onClick={() => setSidebarIsOpen(false)}
+    >
+      <Nav.Link>{category}</Nav.Link>
+    </LinkContainer>
   </Nav.Item>
 ))}
+
 
 </Nav>
 </div>
@@ -196,6 +205,7 @@ onClick={signoutHandler}
               <Route path="/" element={<HomeScreen />} />
               <Route path="/product/:slug" element={<ProductScreen />} />
               <Route path="/cart" element={<CartScreen/>}/>
+              <Route path="/search" element={<SearchScreen/>}/>
               <Route path="/signin" element={<SigninScreen/>}/>
               <Route path="/shipping" element={<ShippingAddressScreen/>}/>
             <Route path="/signup" element={<SignupScreen/>}/>
