@@ -60,7 +60,7 @@ main{
 }
 
 
-.btn-primary{
+.btn-primary, .btn-outline-primary{
   background-color: #f0c040;
   color : #000000;
 }
@@ -103,7 +103,6 @@ main{
   background-color: #100901;
   transition : 0.5s;
 }
-
 
 
 .active-cont{

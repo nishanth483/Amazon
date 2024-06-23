@@ -25,7 +25,6 @@ switch(action.type)
             }
 }
 
-
 const ProfileScreen = () => {
     const {state, dispatch : ctxDispatch} = useContext(Store);
     const {userInfo} = state;
@@ -33,18 +32,17 @@ const ProfileScreen = () => {
     const [email,setEmail]=useState(userInfo.email);
     const[password,setPassword]=useState('');
     const[confirmPassword,setConfirmPassword]=useState('');
-    
     const[dispatch]=useReducer(reducer,{
         loadingUpdate : false,
     });
 
 
     const submitHandler = async(e)=>{
-   e.preventDefault();
-    try{
+      e.preventDefault();
+      try{
       const {data} = await axios.put(
-        `https://amazonbackend-kappa.vercel.app/api/users/profile`,
-        {
+      `https://amazonbackend-kappa.vercel.app/api/users/profile`,
+       {
             name,
             email,
             password,

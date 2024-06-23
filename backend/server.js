@@ -44,13 +44,16 @@ mongoose.connect(process.env.MONGODB_URL).then(() => {
 });
 
 
-
 import cors from 'cors';
 const app = express();
-app.use(cors({
-  origin: 'https://amazonfrontendfinal.vercel.app',
-}));
+// app.use(cors({
+//   origin: 'https://amazonfrontendfinal.vercel.app',
+// }));
 
+
+app.use(cors({
+  origin: ['https://amazonfrontendfinal.vercel.app', 'http://localhost:3000'],
+}));
 
 app.use(cors())
 
@@ -61,15 +64,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
-
-// const allowedOrigins = ['http://localhost:3000', 'https://amazonfrontendfinal.vercel.app'];
-// app.use(cors({
-//   origin: allowedOrigins,
-//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//   allowedHeaders: ['Content-Type', 'Authorization', 'If-None-Match'],
-//   optionsSuccessStatus: 204,
-// }));
 
 
 
@@ -104,6 +98,16 @@ server.listen(port, () => {
   console.log(`server at http://localhost:${port}`);
 });
 
+
+
+
+// const allowedOrigins = ['http://localhost:3000', 'https://amazonfrontendfinal.vercel.app'];
+// app.use(cors({
+//   origin: allowedOrigins,
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   allowedHeaders: ['Content-Type', 'Authorization', 'If-None-Match'],
+//   optionsSuccessStatus: 204,
+// }));
 
 
 

@@ -33,14 +33,15 @@ productRouter.get(
             },
         }
 :{};
-const categoryFilter = category && category !== 'all'?{category}:{};
-const ratingFilter =
 
+const categoryFilter = category && category !== 'all'?{category}:{};
+
+const ratingFilter =
 rating &&  rating !== 'all'
 ?{
     rating : {
         $gte:Number(rating),
-    }
+    },
 }:{};
 
 
@@ -70,12 +71,13 @@ order === 'featured'
             ...queryFilter,
             ...categoryFilter,
             ...priceFilter,
-            ...ratingFilter
+            ...ratingFilter,
         })
         .sort(sortOrder)
         .skip(pageSize * (page-1))
         .limit(pageSize);
   
+        
         const countProducts = await Product.countDocuments({
             ...queryFilter,
             ...categoryFilter,
@@ -86,7 +88,7 @@ order === 'featured'
             products,
             countProducts,
             page,
-            pages: Math.cell(countProducts/pageSize),
+            pages: Math.ceil(countProducts/pageSize),
         });
     })
 )
