@@ -5,22 +5,17 @@ import User from '../models/userModel.js';
 
 const seedRouter = express.Router();
 
-// seedRouter.get('/',async(req,res)=>{
-//     await Product.remove({});
-//     const createdProducts = await Product.insertMany(data.products);
-//     res.send({createdProducts});
-// })
 
 seedRouter.get('/', async (req, res) => {
-    try {
-      await Product.deleteMany({}); // Use deleteMany instead of remove
-      const createdProducts = await Product.insertMany(data.products);
-       await User.deleteMany({});
-      const createdUsers = await User.insertMany(data.users);
-      res.send({createdProducts,createdUsers})
-    } catch (error) {
-      res.status(500).send({ message: error.message });
-    }
-  });
+  try {
+    await Product.deleteMany({}); // Use deleteMany instead of remove
+    const createdProducts = await Product.insertMany(data.products);
+    await User.deleteMany({});
+    const createdUsers = await User.insertMany(data.users);
+    res.send({ createdProducts, createdUsers })
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
+});
 
 export default seedRouter;
