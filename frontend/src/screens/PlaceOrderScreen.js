@@ -83,37 +83,6 @@ const PlaceOrderScreen = () => {
     }
   };
 
-// const placeOrderHandler = async()=>{
-// try{
-// dispatch({type:'CREATE_REQUEST'});
-// const {data} = await axios.post('http://localhost:5000/api/orders',
-// {
-// orderItems:cart.cartItems,
-// shippingAddress:cart.shippingAddress,
-// paymentMethod:cart.paymentMethod,
-// itemsPrice : cart.itemsPrice,
-// shippingPrice : cart.shippingPrice,
-// taxPrice : cart.taxPrice,
-// totalPrice : cart.totalPrice,
-// },{
-//     headers :{
-//         authorization : `Bearer ${userInfo.token}`,
-//     }
-// }
-// );
-// ctxDispatch({type:'CART_CLEAR'});
-// dispatch({type:'CREATE_SUCCESS',payload:data});
-// localStorage.removeItem('cartItems');
-// navigate(`/order/${data.order._id}`);
-
-// console.log(`check ${data.order._id}`);
-// }
-// catch(err)
-// {
-//     dispatch({type:'CREATE_FAIL'});
-//     toast.error(getError(err));
-// }
-// }
 
 
 useEffect(()=>{
@@ -121,7 +90,6 @@ useEffect(()=>{
         navigate('/payment');
     }
 },[cart,navigate]);
-
 
   return (
     <div>
