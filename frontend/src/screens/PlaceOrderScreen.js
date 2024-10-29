@@ -82,12 +82,12 @@ const PlaceOrderScreen = () => {
   };
 
 
-  useEffect(() => {
-    if (!cart.paymentMethod) {
-      navigate('/payment');
+
+useEffect(()=>{
+    if(!cart.paymentMethod){
+        navigate('/payment');
     }
   }, [cart, navigate]);
-
 
   return (
     <div>
