@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 
-const data = {
+const  data = {
     products: [
         {
             // _id: '1',
